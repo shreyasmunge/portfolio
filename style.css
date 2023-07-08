@@ -1,0 +1,39 @@
+@media (max-width:567px)
+{ html{ font-size: 0.1rem;}}
+@media (max-width:786px)
+{ html{ font-size: 0.3rem}}  
+@media (max-width:992px)
+{ html{ font-size: 0.5rem}}
+@media (max-width:1231px)
+{ html{ font-size: 0.7rem}} 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital@1&display=swap');
+body{
+    background-color: rgba(195, 189, 189, 0.784);
+    font-family: 'Poppins', sans-serif;}
+.fa-brands{
+    font-size: 5rem;}
+#skillsio{
+    display: flex;
+    justify-self: space-around;
+    height:auto;}
+#connectio{
+    display: flex;
+    justify-self: space-around;
+    height: auto;
+    text-decoration: none;}
+#profile{
+    height: 120px;
+    width: 100px;
+    clip-path: circle();
+    object-fit: cover;}
+h1{color: antiquewhite;}
+header{
+    background-color: rgb(34, 32, 32);
+    border-radius: 0.5rem;
+}
+a{
+    color: black;
+}
+.linkcolor:hover{
+    color: rgb(144, 159, 159);
+}
