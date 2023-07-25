@@ -80,7 +80,7 @@ h1{
 #header{
     background-color: rgb(34, 32, 32);
     text-align: center;
-    background-image: url("/background.jpg");
+    background-image: url("file:///E:/wallpapers/Rangoli/Desktop/Shreyas%20Munge%20Portfolio/background.jpg");
     background-size: cover;
 }
 a{
