@@ -10,7 +10,7 @@
 
 *{
     margin: 0;
-    padding: 0;
+    padding:0;
     box-sizing: border-box;
     color: black;
 }
@@ -80,7 +80,7 @@ h1{
 #header{
     background-color: rgb(34, 32, 32);
     text-align: center;
-    background-image: url("file:///C:/Users/janhvi/Downloads/background.jpg");
+    background-image: url("background.jpg");
     background-size: cover;
 }
 a{
@@ -97,6 +97,12 @@ h3{
 }
 #certi:hover{
     color: rgb(144, 159, 159);
+}
+section{
+    padding-left: 5px;
+}
+.text{
+    padding-left: 5px;
 }
 footer{
     font-size: 1.3rem;
