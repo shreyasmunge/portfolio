@@ -100,9 +100,17 @@ h3{
 }
 section{
     padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
 }
 .text{
     padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+dt{
+    font-size: 15px;
+    font-display: bold;
 }
 footer{
     font-size: 1.3rem;
