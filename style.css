@@ -56,9 +56,16 @@ body{
     text-align: center;
     gap: 1.87rem;
     margin-top: 0.65rem;
+   
 }
 .fa-brands{
     font-size: 5rem;
+}
+.fa-solid{
+    font-size: 4rem;
+}
+.flask{
+    padding-top: 1rem;
 }
 #connection{
     display: flex;
