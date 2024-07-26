@@ -1,35 +1,59 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:ital@1&display=swap');
-@media (max-width:567px)
-{ html{ font-size: 35%;}
-}
-@media (max-width:786px)
-{ html{ font-size: 45%}
-} 
-@media (max-width:992px)
-{ html{ font-size: 55%}}
-@media (max-width:1231px)
-{ html{ font-size: 65%}} 
 
-*{
+/* Responsive Font Sizes */
+@media (max-width: 567px) {
+    html {
+        font-size: 35%;
+    }
+}
+@media (max-width: 786px) {
+    html {
+        font-size: 45%;
+    }
+}
+@media (max-width: 992px) {
+    html {
+        font-size: 55%;
+    }
+}
+@media (max-width: 1231px) {
+    html {
+        font-size: 65%;
+    }
+}
+
+/* Global Styles */
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
     color: black;
+    font-size: large;
 }
-html,body{
+figcaption h1 {
+    font-size: 2em;
+}
+html, body {
     width: 100%;
     height: 100%;
 }
-.navbar ul{
+body {
+    background-color: rgba(195, 189, 189, 0.784);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar ul {
     list-style-type: none;
     background-color: white;
     padding: 0rem;
     margin: 0rem;
     box-sizing: border-box;
     overflow: hidden;
-    text-align:center;
+    text-align: center;
 }
-.navbar a{
+.navbar a {
     color: black;
     text-decoration: none;
     padding: 0.65rem 0.65rem;
@@ -39,90 +63,222 @@ html,body{
     text-align: center;
     text-transform: uppercase;
 }
-.navbar li{
+.navbar li {
     display: inline-block;
-
 }
-.navbar a:hover{
+.navbar a:hover {
     background-color: rgb(157, 151, 151);
 }
-body{
-    background-color: rgba(195, 189, 189, 0.784);
-    font-family: 'Poppins', sans-serif;}
-#skills{
-    display: flex;
-    justify-content:flex-start;
-    height:auto;
-    text-align: center;
-    gap: 1.87rem;
-    margin-top: 0.65rem;
-   
+
+/* Section and Div Padding */
+section, div {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
 }
-.fa-brands{
-    font-size: 5rem;
-}
-.fa-solid{
-    font-size: 4rem;
-}
-.flask{
-    padding-top: 1rem;
-}
-#connection{
-    display: flex;
-    justify-content: flex-start;
-    text-align: center;
-    gap: 1.87rem;
-}
-.profile_photo{
+
+/* Profile Photo */
+.profile_photo {
     height: 8rem;
     width: 8rem;
-    clip-path:circle();
+    clip-path: circle();
     object-fit: cover;
     margin-left: 1rem;
     margin-top: 1rem;
+}
 
-}
-h1{
-    color: antiquewhite;
-    margin-left: 0.65rem;
-}
-#header{
+/* Header */
+#header {
     background-color: rgb(34, 32, 32);
     text-align: center;
     background-image: url("background.jpg");
     background-size: cover;
 }
-a{
+h1 {
+    color: antiquewhite;
+    margin-left: 0.65rem;
+}
+
+/* Link Color */
+a {
     color: black;
 }
-.linkcolor:hover{
+.linkcolor:hover {
     color: rgb(144, 159, 159);
 }
-h3{
-    margin-top: 0.18rem;
-}
-.linkcolor{
+.linkcolor {
     color: rgb(51, 102, 204);
 }
-section{
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
+
+/* Skills Section */
+#skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.65rem;
 }
-div{
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-}
-dt{
-    font-size: 15px;
-    font-weight: bold;
-}
-footer{
-    font-size: 1.3rem;
+#skills figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    color: black;
+    width: 150px;
 }
-footer :hover{
-    color: rgb(144, 159, 159); 
+.fa-brands, .fa-solid {
+    font-size: 5rem;
+}
+.flask {
+    padding-top: 1rem;
+}
+
+/* Connection Section */
+#connection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 1.87rem;
+}
+#connection div {
+    width: 150px; /* Ensure consistent sizing */
+}
+#connection i {
+    font-size: 5rem;
+}
+
+/* Consistent h2 Styling */
+h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* General Styles for Specific Sections */
+#work-experience, #projects, #connect, #extracurricular {
+    padding-left: 20px; /* Ensure consistency */
+}
+
+/* Work Experience Section */
+#work-experience h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+#work-experience h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+#work-experience p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+#work-experience ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+#work-experience ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+#work-experience a.linkcolor {
+    color: #007bff; /* Adjust this color to match your theme */
+    text-decoration: none;
+}
+#work-experience a.linkcolor:hover {
+    text-decoration: underline;
+}
+
+/* Projects Section */
+#projects h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+#projects dl {
+    margin-left: 20px;
+}
+#projects dt {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+#projects dd {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+#projects a.linkcolor {
+    color: #007bff; /* You can adjust this color to match your theme */
+    text-decoration: none;
+}
+#projects a.linkcolor:hover {
+    text-decoration: underline;
+}
+
+/* Extracurricular Section */
+#extracurricular h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #444; /* Slightly lighter color for subheadings */
+}
+#extracurricular ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+#extracurricular ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #555; /* Light gray for better contrast */
+}
+#extracurricular a.linkcolor {
+    color: #007bff; /* Adjust this color to match your theme */
+    text-decoration: none;
+}
+#extracurricular a.linkcolor:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+    #extracurricular h2, #extracurricular h3 {
+        font-size: 1.2em; /* Adjust font size for smaller screens */
+    }
+    #extracurricular ul {
+        margin-left: 10px; /* Reduce margin for smaller screens */
+    }
+    #extracurricular ul li {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+    }
+    #skills figure {
+        width: 45%; /* Adjust width to fit two items per row */
+    }
+}
+@media (max-width: 480px) {
+    #connection {
+        flex-wrap: nowrap; /* Ensure logos are displayed horizontally */
+        justify-content: center; /* Center align the logos */
+    }
+    #connection div {
+        max-width: none; /* Remove maximum width to allow full width on small screens */
+        width: auto; /* Ensure logos are not squished */
+        margin-bottom: 0; /* Remove margin between logos */
+    }
+    figcaption h1 {
+        font-size: 1.6em;
+    }
+}
+#about ,#skill h2,p{
+    margin-left: 20px;
+}
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1; /* Optional: Add a background color */
+    padding: 10px 0; /* Optional: Add padding for better spacing */
+}
+
+footer a {
+    text-decoration: none;
+    color: #000; /* Optional: Add a color */
+    font-size: 1rem; /* Optional: Adjust font size */
 }
