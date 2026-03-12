@@ -1,209 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keyword" content="Shreyas Munge Portfolio">
-    <meta name="description" content="This website is portfolio of Shreyas Munge">
-    <title>Shreyas Munge Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/6c219f027c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/6c219f027c.js">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shreyas Munge — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --grass:#5D8A2B;--dirt:#8B5E3C;--stone:#6E6E6E;--wood:#A0722A;
+      --leaf:#3B7A35;--coal:#1A1A1A;
+      --gold:#F0C020;--diamond:#5CE8E8;--red:#C03020;--white:#F5F5F5;
+      --emerald:#17A84A;--purple:#9050E0;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--coal);font-family:'Press Start 2P',monospace;color:var(--white);overflow-x:hidden;padding-bottom:72px;}
+    body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect x='2' y='2' width='16' height='16' fill='%235CE8E8' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 10 10,crosshair;}
+    ::-webkit-scrollbar{width:14px;}
+    ::-webkit-scrollbar-track{background:var(--dirt);}
+    ::-webkit-scrollbar-thumb{background:var(--grass);border:3px solid #000;}
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s;}
+    .fade-in.visible{opacity:1;transform:none;}
+
+    /* ── TOP STRIPE ── */
+    .mc-topbar{position:fixed;top:0;left:0;right:0;z-index:950;height:10px;background:repeating-linear-gradient(90deg,var(--grass) 0,var(--grass) 32px,var(--leaf) 32px,var(--leaf) 40px,#3A6B1A 40px,#3A6B1A 64px,var(--grass) 64px,var(--grass) 80px);border-bottom:4px solid #000;}
+
+    /* ── HERO ── */
+    #home{min-height:100vh;background:linear-gradient(180deg,#050D1A 0%,#0E2244 30%,#1A4A8A 58%,#5BC0F8 58%,#5BC0F8 63%,var(--grass) 63%,var(--grass) 68%,var(--dirt) 68%);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:14px;}
+    .stars{position:absolute;top:0;left:0;right:0;height:60%;pointer-events:none;z-index:1;}
+    .star{position:absolute;width:4px;height:4px;background:#fff;animation:twinkle 2s infinite;}
+    @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+    .moon{position:absolute;top:50px;left:80px;z-index:2;width:52px;height:52px;background:#E8D870;border:4px solid #000;box-shadow:4px 4px 0 #000;}
+    .moon::after{content:'';position:absolute;top:-4px;left:12px;width:30px;height:30px;background:#0E2244;border:4px solid #000;}
+    .cloud{position:absolute;background:rgba(255,255,255,.88);border:4px solid rgba(0,0,0,.15);z-index:2;animation:drift linear infinite;}
+    @keyframes drift{from{transform:translateX(-300px)}to{transform:translateX(110vw)}}
+    .torch{position:absolute;z-index:3;bottom:72px;width:8px;height:26px;background:var(--wood);border:2px solid #000;}
+    .torch::before{content:'🔥';position:absolute;top:-20px;left:-5px;font-size:16px;animation:flicker .45s step-end infinite;}
+    @keyframes flicker{50%{opacity:.55}}
+    .ground-row{position:absolute;bottom:0;left:0;right:0;display:flex;height:68%;overflow:hidden;pointer-events:none;z-index:2;}
+
+    /* Steve */
+    .steve-wrap{position:absolute;bottom:66px;right:18%;z-index:4;animation:bob 1.2s ease-in-out infinite;}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .steve{width:56px;height:84px;position:relative;}
+    .s-head{width:36px;height:36px;position:absolute;top:0;left:10px;background:#C68642;border:3px solid #000;box-shadow:3px 3px 0 #000;}
+    .s-head::before{content:'';position:absolute;top:0;left:0;right:0;height:10px;background:#6B3A2A;}
+    .s-el,.s-er{position:absolute;top:14px;width:7px;height:7px;background:#fff;border:2px solid #000;}
+    .s-el{left:5px}.s-er{right:5px}
+    .s-el::after,.s-er::after{content:'';position:absolute;top:2px;left:2px;width:3px;height:3px;background:#1A1AFF;}
+    .s-body{width:36px;height:32px;position:absolute;top:36px;left:10px;background:#3B6BB5;border:3px solid #000;}
+    .s-al,.s-ar{width:14px;height:32px;position:absolute;top:36px;background:#C68642;border:3px solid #000;}
+    .s-al{left:0}.s-ar{right:0}
+    .s-ll,.s-lr{width:16px;height:24px;position:absolute;top:68px;background:#2A4080;border:3px solid #000;}
+    .s-ll{left:10px}.s-lr{right:10px}
+
+    /* Creeper */
+    .creeper-wrap{position:absolute;bottom:66px;left:14%;z-index:4;animation:bob 1.6s ease-in-out infinite reverse;}
+    .creeper{width:44px;height:72px;position:relative;}
+    .c-head{width:36px;height:32px;position:absolute;top:0;left:4px;background:#3EA050;border:3px solid #000;box-shadow:3px 3px 0 #000;}
+    .c-el,.c-er{position:absolute;top:8px;width:10px;height:10px;background:#000;}
+    .c-el{left:4px}.c-er{right:4px}
+    .c-m{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:16px;height:8px;background:#000;}
+    .c-body{width:28px;height:28px;position:absolute;top:32px;left:8px;background:#3EA050;border:3px solid #000;}
+    .c-l1,.c-l2{width:12px;height:20px;position:absolute;top:60px;background:#3EA050;border:3px solid #000;}
+    .c-l1{left:4px}.c-l2{left:18px}
+
+    /* Hero text */
+    .hero-content{text-align:center;z-index:5;margin-bottom:175px;padding:0 16px;}
+    .hero-badge{font-size:8px;color:var(--diamond);letter-spacing:3px;text-shadow:2px 2px #000;margin-bottom:14px;}
+    .hero-title{font-size:clamp(20px,5vw,40px);color:#fff;text-shadow:4px 4px 0 #000,-2px -2px 0 #000;line-height:1.5;margin-bottom:16px;}
+    .hero-title .name{color:var(--gold);}
+
+    /* ── TAGLINE — bigger & more visible ── */
+    .hero-tagline{
+      font-size:clamp(8px,1.6vw,11px);
+      color:#fff;
+      text-shadow:2px 2px 0 #000;
+      margin-bottom:24px;
+      line-height:2.6;
+      max-width:640px;
+      margin-left:auto;margin-right:auto;
+      letter-spacing:1px;
+    }
+    .hero-tagline .hl{color:var(--gold);}
+    .hero-tagline .sep{color:var(--diamond);margin:0 8px;}
+
+    .btn-resume{display:inline-block;background:var(--gold);color:#000;font-family:'Press Start 2P',monospace;font-size:9px;text-decoration:none;padding:11px 18px;border:4px solid #000;box-shadow:5px 5px 0 #000;transition:all .1s;margin:4px;cursor:pointer;}
+    .btn-resume:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #000;}
+    /* ── Contact Me button — scrolls to #contact ── */
+    .btn-contact{display:inline-block;background:var(--diamond);color:#000;font-family:'Press Start 2P',monospace;font-size:9px;text-decoration:none;padding:11px 18px;border:4px solid #000;box-shadow:5px 5px 0 #000;transition:all .1s;margin:4px;cursor:pointer;}
+    .btn-contact:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #000;}
+
+    .xp-wrap{margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:5px;}
+    .xp-lbl{font-size:6px;color:rgba(255,255,255,.45);}
+    .xp-bar{width:200px;height:11px;background:#111;border:3px solid #000;}
+    .xp-fill{height:100%;background:linear-gradient(90deg,#40B010,#68E030);animation:xpg 2.5s ease-out forwards;width:0;}
+    @keyframes xpg{to{width:78%}}
+    .scroll-hint{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);font-size:7px;color:#fff;text-shadow:2px 2px #000;animation:blink 1s step-end infinite;white-space:nowrap;z-index:5;transition:opacity .4s;}
+    .scroll-hint.hidden{opacity:0;pointer-events:none;}
+    @keyframes blink{50%{opacity:0}}
+
+    /* ── SECTION BGs ── */
+    .bg-dirt{background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(0,0,0,.07) 79px,rgba(0,0,0,.07) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(0,0,0,.07) 79px,rgba(0,0,0,.07) 80px),#5A3820;}
+    .bg-night{background:linear-gradient(180deg,#0A1525,#142040);}
+    .bg-stone{background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,0,0,.07) 39px,rgba(0,0,0,.07) 40px),#595959;}
+    .bg-nether{background:radial-gradient(ellipse at top,#3D0800,#1A0000);}
+    .bg-wood{background:repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(0,0,0,.07) 19px,rgba(0,0,0,.07) 20px),#7A4A1A;}
+    .bg-deep{background:linear-gradient(180deg,#04090F,#081420);}
+
+    section{padding:68px 24px;max-width:1100px;margin:0 auto;}
+    .sec-title{font-size:clamp(11px,2.2vw,18px);color:var(--gold);text-align:center;margin-bottom:40px;text-shadow:3px 3px 0 #000;position:relative;display:inline-block;left:50%;transform:translateX(-50%);}
+    .sec-title::after{content:'';display:block;height:4px;margin-top:10px;background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 8px,transparent 8px,transparent 12px);}
+
+    /* ── ABOUT ── */
+    .about-card{background:#C6C6C6;border:4px solid #555;box-shadow:6px 6px 0 #000,inset 2px 2px 0 #fff,inset -2px -2px 0 #777;padding:26px;max-width:860px;margin:0 auto;}
+    .inv-title{font-size:13px;color:#2A2A2A;text-align:center;margin-bottom:16px;text-shadow:1px 1px #fff;}
+    .about-text{font-family:'VT323',monospace;font-size:20px;color:#111;line-height:1.85;}
+    .about-text p{margin-bottom:14px;}.about-text p:last-child{margin-bottom:0;}
+
+    /* ── EXPERIENCE ── */
+    .exp-list{display:flex;flex-direction:column;gap:16px;max-width:880px;margin:0 auto;}
+    .exp-entry{background:#8B6914;border:4px solid #000;box-shadow:5px 5px 0 #000;display:flex;overflow:hidden;}
+    .exp-stripe{width:12px;flex-shrink:0;background:repeating-linear-gradient(180deg,var(--gold) 0,var(--gold) 8px,#5A4000 8px,#5A4000 16px);}
+    .exp-body{padding:16px;flex:1;}
+    .exp-date{font-size:6px;color:var(--gold);margin-bottom:6px;}
+    .exp-role{font-size:9px;color:#fff;margin-bottom:3px;line-height:1.8;}
+    .exp-company{font-size:8px;color:var(--diamond);margin-bottom:9px;}
+    .exp-desc{font-family:'VT323',monospace;font-size:18px;color:#DDD;line-height:1.65;}
+
+    /* ── PROJECTS ── */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+    .chest-card{background:#A0722A;border:4px solid #000;box-shadow:6px 6px 0 #000;overflow:hidden;transition:transform .1s,box-shadow .1s;cursor:pointer;}
+    .chest-card:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 #000;}
+    .chest-lid{background:#C8902E;height:13px;border-bottom:4px solid #6B5020;display:flex;align-items:center;justify-content:center;}
+    .chest-lock{width:13px;height:9px;background:#888;border:2px solid #555;}
+    .chest-body{padding:15px;}
+    .chest-tag{font-size:6px;color:var(--gold);margin-bottom:5px;background:rgba(0,0,0,.3);display:inline-block;padding:2px 5px;}
+    .chest-title{font-size:9px;color:#fff;margin-bottom:7px;line-height:1.7;}
+    .chest-desc{font-family:'VT323',monospace;font-size:17px;color:#DDD;line-height:1.5;margin-bottom:10px;}
+    .chest-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
+    .badge{font-size:6px;padding:2px 6px;background:var(--stone);color:#fff;border:2px solid #444;}
+    .badge.d{background:#0A5555;border-color:var(--diamond);}
+    .badge.g{background:#554000;border-color:var(--gold);}
+    .badge.r{background:#550000;border-color:var(--red);}
+    .badge.e{background:#0A4020;border-color:var(--emerald);}
+    .badge.p{background:#2A0A4A;border-color:var(--purple);}
+    .chest-link{font-size:7px;color:var(--diamond);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s;}
+    .chest-link:hover{border-color:var(--diamond);}
+
+    /* ── SKILLS — Sign Board Nametag design ── */
+    .skills-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+
+    /* Each category = a dark sign panel */
+    .skill-panel{
+      background:#1A1A1A;
+      border:4px solid #000;
+      box-shadow:5px 5px 0 #000;
+      overflow:hidden;
+    }
+    /* Coloured header bar acts like a Minecraft sign top-edge */
+    .skill-panel-header{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 18px;
+      border-bottom:3px solid #000;
+    }
+    .skill-panel-header .sp-label{
+      font-size:9px;
+      color:#fff;
+      text-shadow:2px 2px 0 #000;
+      letter-spacing:1px;
+    }
+    /* colour themes per category */
+    .sp-lang   .skill-panel-header{background:#3A2A00;border-color:var(--gold);}
+    .sp-web    .skill-panel-header{background:#0A3A3A;border-color:var(--diamond);}
+    .sp-ai     .skill-panel-header{background:#3A0000;border-color:var(--red);}
+    .sp-tools  .skill-panel-header{background:#0A3A0A;border-color:var(--emerald);}
+
+    /* tag container */
+    .skill-tags{
+      padding:16px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    /* individual nametag chip */
+    .sk-tag{
+      display:inline-flex;align-items:center;
+      font-family:'Press Start 2P',monospace;
+      font-size:7px;
+      padding:6px 12px;
+      background:#2A2A2A;
+      color:#E8E8E8;
+      border:2px solid #555;
+      /* left-accent coloured stripe */
+      border-left-width:4px;
+      transition:transform .1s,box-shadow .1s,background .1s;
+      cursor:default;
+      position:relative;
+      white-space:nowrap;
+    }
+    .sk-tag:hover{
+      transform:translateY(-3px);
+      box-shadow:0 4px 0 rgba(0,0,0,.6);
+      background:#383838;
+    }
+    /* accent colours matching category */
+    .sp-lang  .sk-tag{border-left-color:var(--gold);}
+    .sp-web   .sk-tag{border-left-color:var(--diamond);}
+    .sp-ai    .sk-tag{border-left-color:var(--red);}
+    .sp-tools .sk-tag{border-left-color:var(--emerald);}
+
+    /* small dot before tag name */
+    .sk-tag::before{
+      content:'■';
+      font-size:6px;
+      margin-right:7px;
+      opacity:.7;
+    }
+    .sp-lang  .sk-tag::before{color:var(--gold);}
+    .sp-web   .sk-tag::before{color:var(--diamond);}
+    .sp-ai    .sk-tag::before{color:var(--red);}
+    .sp-tools .sk-tag::before{color:var(--emerald);}
+
+    /* ── EXTRACURRICULAR — no icons ── */
+    .extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:920px;margin:0 auto;}
+    .extra-card{background:#2A1A0A;border:4px solid #000;box-shadow:5px 5px 0 #000;padding:18px;}
+    .extra-title{font-size:8px;color:var(--gold);margin-bottom:10px;line-height:1.7;}
+    .extra-desc{font-family:'VT323',monospace;font-size:17px;color:#BBB;line-height:1.6;}
+    .extra-link{display:inline-block;margin-top:9px;font-size:7px;color:var(--diamond);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s;}
+    .extra-link:hover{border-color:var(--diamond);}
+
+    /* ── CONTACT ── */
+    .contact-wrap{max-width:580px;margin:0 auto;}
+    .sign-board{background:#A0722A;border:4px solid #6B4A1A;box-shadow:6px 6px 0 #000,inset 2px 2px 0 rgba(255,255,255,.2);padding:24px 28px;}
+    .sign-board-title{font-size:10px;color:#1A0A00;text-align:center;margin-bottom:16px;text-shadow:1px 1px rgba(255,255,255,.3);}
+    .contact-list{display:flex;flex-direction:column;gap:10px;}
+    .contact-item{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.2);padding:10px 14px;border:2px solid rgba(0,0,0,.3);}
+    .contact-icon{font-size:20px;flex-shrink:0;}
+    .contact-info{display:flex;flex-direction:column;gap:3px;}
+    .contact-label{font-size:6px;color:rgba(255,255,255,.4);}
+    .contact-val{font-size:9px;}
+    .contact-val a{color:#1A0A00;text-decoration:none;border-bottom:2px solid rgba(0,0,0,.25);}
+    .contact-val a:hover{color:var(--gold);border-color:var(--gold);}
+    .sign-post-stick{width:18px;height:52px;background:#8B5E3C;border:3px solid #6B4020;margin:0 auto;box-shadow:3px 0 0 rgba(0,0,0,.3);}
+    .profile-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
+    .profile-btn{display:flex;align-items:center;gap:10px;background:#2A2A2A;border:3px solid #555;box-shadow:4px 4px 0 #000;padding:12px 14px;text-decoration:none;color:#fff;transition:all .1s;}
+    .profile-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000;border-color:var(--diamond);}
+    .pb-icon{font-size:22px;}
+    .pb-info{display:flex;flex-direction:column;gap:3px;}
+    .pb-label{font-size:6px;color:rgba(255,255,255,.4);}
+    .pb-name{font-size:8px;color:var(--diamond);}
+
+    /* ── RESUME MODAL ── */
+    .resume-modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.88);align-items:center;justify-content:center;}
+    .resume-modal.open{display:flex;}
+    .resume-box{background:#C6C6C6;border:4px solid #555;box-shadow:8px 8px 0 #000,inset 2px 2px 0 #fff;padding:28px;max-width:460px;width:90%;text-align:center;}
+    .resume-box-title{font-size:12px;color:#111;margin-bottom:12px;}
+    .resume-box p{font-family:'VT323',monospace;font-size:18px;color:#333;line-height:1.7;margin-bottom:16px;}
+    .resume-btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+    .rbtn{font-family:'Press Start 2P',monospace;font-size:9px;padding:10px 16px;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;transition:all .1s;text-decoration:none;display:inline-block;}
+    .rbtn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #000;}
+    .rbtn.green{background:var(--grass);color:#fff;}
+    .rbtn.grey{background:var(--stone);color:#fff;}
+
+    /* ── HOTBAR ── */
+    .hotbar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(18,18,18,.97);border-top:4px solid #555;display:flex;justify-content:center;align-items:center;padding:5px 0;gap:3px;}
+    .hb-slot{width:46px;height:46px;background:#8B8B8B;border:3px solid;border-color:#555 #ddd #ddd #555;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all .1s;position:relative;}
+    .hb-slot:hover{background:#6B6B6B;transform:translateY(-5px);}
+    .hb-slot.active{background:#6B6B6B;border-color:#fff #333 #333 #fff;outline:3px solid #fff;}
+    .hb-slot::after{content:attr(data-label);position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#000;color:var(--gold);font-size:8px;padding:4px 10px;border:2px solid var(--gold);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s;}
+    .hb-slot:hover::after{opacity:1;}
+
+    /* ── PARTICLES ── */
+    .particle{position:fixed;width:8px;height:8px;pointer-events:none;z-index:9999;animation:fall linear forwards;}
+    @keyframes fall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(64px) rotate(90deg)}}
+
+    @media(max-width:640px){
+      .hb-slot{width:38px;height:38px;font-size:16px;}
+      .profile-links{grid-template-columns:1fr 1fr;}
+      .hero-title{font-size:18px;}
+      .sk-tag{font-size:6px;padding:5px 9px;}
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work-experience">Work Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#extracurricular">Extracurricular</a></li>
-            <li><a href="#connect">Contact</a></li>
-        </ul>
-    </nav>
-   
-    <header id="header">
-    <figure>
-        <img class="profile_photo" src="shreyas.png" alt="Shreyas Munge Profile">
-        <figcaption><h1>Shreyas Munge</h1></figcaption>
-    </figure>
-    <br>
-    <br>
-    </header>
-    <main>
-    <section>
-        <h2 id="about">About Me</h2>
-    
-        <p>I  am a passionate software developer currently pursuing Computer Science at Administrative Management College, Bangalore. With hands-on experience in Django, React.js, and various web technologies, I have developed a range of projects from to-do applications to multi-page apps. My journey includes contributions to open-source projects and internships where I honed my skills in web development and project management. I also have strong problem-solving skills and a solid understanding of data structures and algorithms. Outside of tech, I have excelled in sports, having represented my state in national hockey and cricket tournaments.
 
+<div class="mc-topbar"></div>
 
-        </p>
-        <br>
-        <hr>
-    </section>
-    
-    <section id="work-experience">
-        <h2>Work Experience</h2>
-        
-        <h3>Headstarter AI - Software Engineering Fellowship</h3>
-        <p>July 2024 - Present</p>
-        <ul>
-            <li>Building a diverse set of 5 AI projects spanning customer support, flashcards, and AI ratings.</li>
-            <li>Participating in hackathons to apply learned skills in real-time challenges.</li>
-            <li>Developing and launching a capstone project aimed at achieving over 1,000 users.</li>
-            <li>Mastering technologies including HTML/CSS, React, NextJS, Firebase, OpenAI, Stripe API, and Pinecone for comprehensive project development and deployment.</li>
-        </ul>
-        <h3>GirlScript Summer of Code</h3>
-        <p>Open Source Contributor</p>
-        <p>May 2024 - August 2024</p>
-        <ul>
-            <li>Selected for GSSoC 2024, where I honed my skills in identifying and resolving bugs in open-source projects, contributing to their improvement.</li>
-            <li>Learned effective GitHub workflows, including creating pull requests and collaborating with other developers.</li>
-            <li>Gained hands-on experience in enhancing existing features and implementing new functionalities, fostering my growth as a developer within the open-source community.</li>
-        </ul>
-        <h3>Unext Media - Software Development Intern</h3>
-        <p>March 2024 - April 2024</p>
-        <ul>
-            <li>Interned as a Software Developer, focusing on HTML, CSS, JS, React.js web technologies. Collaborated on React.js projects, including React-Admin, for assigned tasks.</li>
-            <li>Gained hands-on experience with React-Admin's admin interface development.</li>
-            <li>Engaged in code reviews, discussions, and knowledge-sharing sessions with team members and successfully delivered assigned tasks within project timelines, contributing to project milestones.</li>
-        </ul>
-        
-        <hr>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <dl>
-            <dt>TaskTracker</dt>
-            <dd>
-                I developed TaskTracker, a comprehensive to-do application using Django, which includes robust CRUD (Create, Read, Update, Delete) functionalities to facilitate efficient task management. The application features strong authentication mechanisms and secure database management to ensure the integrity and privacy of user data, delivering a reliable and safe user experience. TaskTracker is designed to be fully responsive, adapting seamlessly to various devices such as desktops, tablets, and smartphones, thereby enhancing accessibility and usability for all users. Furthermore, I successfully deployed TaskTracker on Railway, providing a scalable and dependable solution for users to manage their tasks online.
-                <br>
-                <a class="linkcolor" style="text-decoration: none;" target="_blank" href="https://tasktracker.up.railway.app">[Link]</a>
-            
-            </dd>
-            
-            <dt>QuoteGen & GitProfile</dt>
-            <dd>
-                I developed a dynamic multi-page React application featuring both a random quotes generator and a GitHub profile viewer, enhancing functionality through efficient API data fetching. Utilizing React.js, I created modular and reusable components, which streamlined development and maintenance. My work showcased expertise in API integration, handling asynchronous data fetching, and managing Git version control to ensure seamless collaboration. Additionally, I provided comprehensive documentation, detailing key features, installation instructions, and usage guidelines, which supports both users and developers in navigating and utilizing the application effectively.
-                <br>
-                <a class="linkcolor" style="text-decoration: none;" target="_blank" href="https://shreyasreactapp.netlify.app/">[Link]</a>
-            
-            </dd>
-            
-            <dt>Portfolio</dt>
-            <dd>
-                I built a personal portfolio website using HTML and CSS, creating a professional and visually appealing platform to showcase my skills and projects. The site features a responsive design, ensuring optimal viewing across various devices while prioritizing user-centered design principles for an enhanced user experience. Deployed on GitHub Pages, the website offers easy access and visibility for visitors and is actively maintained to reflect the latest projects and updates. This portfolio effectively demonstrates my proficiency in front-end web development, providing a clear representation of my skills and experience to potential employers and collaborators.
-                <br>
-                <a class="linkcolor" style="text-decoration: none;" target="_blank" href="https://github.com/shreyasmunge/portfolio">[Link]</a>
-               
-            </dd>
-        </dl>
-        <hr>
-    </section>
-    
-    </section>
-    <section >
-<h2 style="margin-left: 20px;">Skills</h2>
-        <div id="skills">
-            <div>
-                <figure>
-                    <i class="fa-brands fa-git" style="color: #f05032;"></i>
-                    <figcaption>Git</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-python"></i>
-                    <figcaption>Python</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-python" style="color: #092e20;"></i>
-                    <figcaption>Django</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-solid fa-flask" style="color: #060707;"></i>
-                    <figcaption>Flask</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-java" style="color: #007396;"></i>
-                    <figcaption>Java</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-html5" style="color: #f06529;"></i>
-                    <figcaption>HTML</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-css3-alt" style="color: #6eaecf;"></i>
-                    <figcaption>CSS</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-js" style="color: #f0db4f;"></i>
-                    <figcaption>JavaScript</figcaption>
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <i class="fa-brands fa-react" style="color: #61dafb;"></i>
-                    <figcaption>React.js</figcaption>
-                </figure>
-            </div>
-        </div>
-        <br>
-        <hr>
-    </section>
-    <section id="extracurricular">
-        <h2>Extracurricular Activities</h2>
-    
-        <ul>
-            <li><h3>National Cricket Player</h3> <a class="linkcolor" href="https://drive.google.com/file/d/13k8nwAhntFrQ-Az_6sOoyM8-WEqpHkvZ/view?usp=drivesdk" target="_blank">[Certificate]</a></li>
-            <li><h3>National Hockey Player</h3> <a class="linkcolor" href="https://drive.google.com/file/d/13eKMDotNdEcJqDnzM2-PDEE1xbeMiZP-/view?usp=drivesdk" target="_blank">[Certificate]</a></li>
-            <li><h3>Passionate Photographer</h3></li>
-            <li><h3>Fitness Freak</h3></li>
-        </ul>
-       
-        <hr>
-    </section>
-   <section id="connect">
-    <h2>Let's Connect</h2>
-    <div id="connection">
-        <div> 
-            <a href="https://www.linkedin.com/in/shreyas-munge-1783661b0">
-                <i id="linkedin" class="fa-brands fa-linkedin" style="color: #0a66c2;"></i>
-            </a>
-            <p><a class="linkcolor" href="https://www.linkedin.com/in/shreyas-munge-1783661b0" style="text-decoration: none;" target="_blank">Connect here</a></p>
-        </div>
-        <div>
-            <a href="https://github.com/shreyasmunge">
-                <i class="fa-brands fa-github" style="color: #090808;"></i>
-            </a>
-            <p><a class="linkcolor" href="https://github.com/shreyasmunge" style="text-decoration: none;" target="_blank">See Contributions</a></p>
-        </div>
-        <div>
-            <a href="mailto:shreyasmunge7@gmail.com">
-                <i class="fa-brands fa-google" style="color: #DB4437;"></i>
-            </a>
-            <p><a class="linkcolor" href="mailto:shreyasmunge7@gmail.com" style="text-decoration: none;">Email me</a></p>
-        </div>
+<!-- ══════════════ HERO ══════════════ -->
+<div id="home">
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+  <div class="cloud" style="width:96px;height:26px;top:22%;left:-150px;animation-duration:32s;"></div>
+  <div class="cloud" style="width:64px;height:20px;top:28%;left:-100px;animation-duration:26s;animation-delay:8s;"></div>
+  <div class="cloud" style="width:130px;height:26px;top:17%;left:-200px;animation-duration:40s;animation-delay:14s;"></div>
+  <div class="torch" style="right:calc(18% + 76px);"></div>
+  <div class="torch" style="left:calc(14% + 64px);"></div>
+
+  <div class="steve-wrap">
+    <div class="steve">
+      <div class="s-head"><div class="s-el"></div><div class="s-er"></div></div>
+      <div class="s-body"></div><div class="s-al"></div><div class="s-ar"></div>
+      <div class="s-ll"></div><div class="s-lr"></div>
     </div>
-    <br>
-    <hr>
+  </div>
+  <div class="creeper-wrap">
+    <div class="creeper">
+      <div class="c-head"><div class="c-el"></div><div class="c-er"></div><div class="c-m"></div></div>
+      <div class="c-body"></div><div class="c-l1"></div><div class="c-l2"></div>
+    </div>
+  </div>
+
+  <div class="hero-content fade-in visible">
+    <p class="hero-badge">✦ PORTFOLIO ✦</p>
+    <h1 class="hero-title"><span class="name">SHREYAS MUNGE</span></h1>
+    <p class="hero-tagline">
+      <span class="hl">Incoming MSCS @ Northeastern</span>
+      <span class="sep">|</span>
+      AI&nbsp;+&nbsp;SWE
+      <span class="sep">|</span>
+      <span class="hl">Summer 2027 intern hopeful</span>
+    </p>
+    <div>
+      <button class="btn-resume" onclick="document.getElementById('resumeModal').classList.add('open')">📜 VIEW RESUME</button>
+      <button class="btn-contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">✉ CONTACT ME</button>
+    </div>
+    <div class="xp-wrap">
+      <span class="xp-lbl">── XP ──────────────────────────── LVL 99</span>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+  </div>
+
+  <div class="ground-row" id="groundRow"></div>
+  <div class="scroll-hint" id="scrollHint">▼ SCROLL DOWN ▼</div>
+</div>
+
+<!-- ══════════════ ABOUT ME ══════════════ -->
+<div class="bg-dirt" id="about">
+<section>
+  <div class="sec-title">ABOUT ME</div>
+  <div class="about-card fade-in">
+    <div class="inv-title">— PLAYER INFO —</div>
+    <div class="about-text">
+      <p>👋 Hey there, how is it going? I am Shreyas, an incoming MSCS student at the Khoury College of Computer Sciences, Northeastern University (Fall '26).</p>
+      <p>🤖 I enjoy building things, breaking them, and improving them — especially when software and AI come together. I am particularly interested in designing software systems where AI is a core part of the application, not just an add-on. This includes working on things like AI agents, intelligent workflows, and retrieval-based systems that make software more useful and effective in real-world scenarios. To me, AI is not just about models — it is about how those models fit into a well-designed system.</p>
+      <p>🔍 I am currently exploring opportunities for Summer '27 internships, where I can contribute to engineering roles focused on building AI-powered software.</p>
+      <p>💬 Feel free to get in touch.</p>
+    </div>
+  </div>
 </section>
-    </main>    
-    <footer>
-    <a href="#" style="text-decoration: none;">Back to top</a>
-    </footer>
+</div>
+
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<div class="bg-night" id="experience">
+<section>
+  <div class="sec-title">EXPERIENCE</div>
+  <div class="exp-list">
+    <div class="exp-entry fade-in">
+      <div class="exp-stripe"></div>
+      <div class="exp-body">
+        <div class="exp-date">📅 DEC 2024 – MAY 2025</div>
+        <div class="exp-role">SOFTWARE ENGINEERING INTERN</div>
+        <div class="exp-company">🏢 Renan</div>
+        <div class="exp-desc">Took ownership of backend and workflow features by designing REST APIs, optimizing database models, and improving system reliability with asynchronous processes — resulting in more efficient order tracking, fewer manual errors, and a smoother experience for internal users.</div>
+      </div>
+    </div>
+    <div class="exp-entry fade-in">
+      <div class="exp-stripe"></div>
+      <div class="exp-body">
+        <div class="exp-date">📅 JUL 2024 – SEP 2024</div>
+        <div class="exp-role">SOFTWARE ENGINEERING FELLOW</div>
+        <div class="exp-company">🏢 Headstarter AI</div>
+        <div class="exp-desc">Collaborated in a fast-paced, team-driven environment to design and build full-stack applications from start to finish, shipping responsive features while learning how to work effectively with others and turn ideas into production-ready software.</div>
+      </div>
+    </div>
+    <div class="exp-entry fade-in">
+      <div class="exp-stripe"></div>
+      <div class="exp-body">
+        <div class="exp-date">📅 MAY 2024 – AUG 2024</div>
+        <div class="exp-role">OPEN SOURCE CONTRIBUTOR</div>
+        <div class="exp-company">🌐 GirlScript Summer of Code 2024</div>
+        <div class="exp-desc">Contributed to open-source projects by picking up real issues, fixing bugs, adding features, and taking part in code reviews — while learning how to collaborate with developers across different time zones and codebases.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════ PROJECTS ══════════════ -->
+<div class="bg-stone" id="projects">
+<section>
+  <div class="sec-title">PROJECTS</div>
+  <div class="projects-grid">
+    <div class="chest-card fade-in">
+      <div class="chest-lid"><div class="chest-lock"></div></div>
+      <div class="chest-body">
+        <div class="chest-tag">⛏ RAG SYSTEM</div>
+        <div class="chest-title">DOCMIND</div>
+        <div class="chest-desc">Production-ready RAG system for querying text and scanned PDFs using OCR, semantic search, and self-hosted LLMs.</div>
+        <div class="chest-badges"><span class="badge d">FastAPI</span><span class="badge r">Celery</span><span class="badge">Redis</span><span class="badge p">FAISS</span><span class="badge e">Ollama</span><span class="badge">OCR</span></div>
+        <a href="https://github.com/shreyasmunge/RAG_ai_agent" target="_blank" class="chest-link">🔗 View on GitHub →</a>
+      </div>
+    </div>
+    <div class="chest-card fade-in">
+      <div class="chest-lid"><div class="chest-lock"></div></div>
+      <div class="chest-body">
+        <div class="chest-tag">⛏ FULL-STACK</div>
+        <div class="chest-title">LEETBUDDY</div>
+        <div class="chest-desc">Platform that intelligently matches developers with compatible DSA practice partners using a custom scoring and scheduling system.</div>
+        <div class="chest-badges"><span class="badge d">React</span><span class="badge r">FastAPI</span><span class="badge e">PostgreSQL</span><span class="badge">Supabase</span><span class="badge">Auth</span></div>
+        <a href="https://algomatch-six.vercel.app/" target="_blank" class="chest-link">🔗 Live Demo →</a>
+      </div>
+    </div>
+    <div class="chest-card fade-in">
+      <div class="chest-lid"><div class="chest-lock"></div></div>
+      <div class="chest-body">
+        <div class="chest-tag">⛏ AI BOT</div>
+        <div class="chest-title">TWITTER-OLLAMA-BOT</div>
+        <div class="chest-desc">AI-powered Twitter bot that generates, validates, and auto-posts content using a local LLM with robust retry and logging mechanisms.</div>
+        <div class="chest-badges"><span class="badge e">Python</span><span class="badge p">Ollama</span><span class="badge d">Twitter API</span><span class="badge">Logging</span></div>
+        <a href="https://github.com/shreyasmunge/twitter-ollama-bot" target="_blank" class="chest-link">🔗 View on GitHub →</a>
+      </div>
+    </div>
+    <div class="chest-card fade-in">
+      <div class="chest-lid"><div class="chest-lock"></div></div>
+      <div class="chest-body">
+        <div class="chest-tag">⛏ DATA SYSTEMS</div>
+        <div class="chest-title">ENERGYGRID AGGREGATOR</div>
+        <div class="chest-desc">Python-based data aggregation system to fetch telemetry from solar inverters with API rate limiting, token auth, and a mock API for local testing.</div>
+        <div class="chest-badges"><span class="badge e">Python</span><span class="badge d">REST APIs</span><span class="badge">Rate Limiting</span></div>
+        <a href="https://github.com/shreyasmunge/energygrid-data-aggregator" target="_blank" class="chest-link">🔗 View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<div class="bg-nether" id="skills">
+<section>
+  <div class="sec-title">SKILLS &amp; TOOLS</div>
+  <div class="skills-wrap">
+
+    <!-- Languages -->
+    <div class="skill-panel sp-lang fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">PROGRAMMING LANGUAGES</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">Python</span>
+        <span class="sk-tag">Java</span>
+      </div>
+    </div>
+
+    <!-- Web -->
+    <div class="skill-panel sp-web fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">WEB TECHNOLOGIES &amp; FRAMEWORKS</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">HTML</span>
+        <span class="sk-tag">CSS</span>
+        <span class="sk-tag">JavaScript</span>
+        <span class="sk-tag">RESTful APIs</span>
+        <span class="sk-tag">FastAPI</span>
+        <span class="sk-tag">Django</span>
+        <span class="sk-tag">Flask</span>
+        <span class="sk-tag">React</span>
+        <span class="sk-tag">Postman</span>
+        <span class="sk-tag">Hopscotch</span>
+      </div>
+    </div>
+
+    <!-- AI / LLM -->
+    <div class="skill-panel sp-ai fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">AI / LLM STACK</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">Ollama</span>
+        <span class="sk-tag">OpenAI API</span>
+        <span class="sk-tag">Anthropic Claude</span>
+        <span class="sk-tag">LangChain</span>
+        <span class="sk-tag">FAISS</span>
+        <span class="sk-tag">RAG</span>
+        <span class="sk-tag">AI Agents</span>
+        <span class="sk-tag">Celery</span>
+        <span class="sk-tag">Semantic Search</span>
+      </div>
+    </div>
+
+    <!-- Tools / DBs -->
+    <div class="skill-panel sp-tools fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">DATABASES, TOOLS &amp; PLATFORMS</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">Git</span>
+        <span class="sk-tag">GitHub</span>
+        <span class="sk-tag">PostgreSQL</span>
+        <span class="sk-tag">SQLite</span>
+        <span class="sk-tag">SQL</span>
+        <span class="sk-tag">Redis</span>
+        <span class="sk-tag">Supabase</span>
+        <span class="sk-tag">Docker</span>
+        <span class="sk-tag">VS Code</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ══════════════ EXTRACURRICULAR ══════════════ -->
+<div class="bg-wood" id="extracurricular">
+<section>
+  <div class="sec-title">EXTRACURRICULAR</div>
+  <div class="extra-grid">
+
+    <div class="extra-card fade-in">
+      <div class="extra-title">STATE-LEVEL SPORTS</div>
+      <div class="extra-desc">Represented Telangana in Cricket &amp; Hockey after being selected through district and state-level trials based on performance.</div>
+      <a href="https://drive.google.com/file/d/1v1IB0hXtmr4TFER5Fp2sKHb8EnSTw2zV/view?usp=sharing" target="_blank" class="extra-link">📜 Cricket Certificate →</a>
+      <br>
+      <a href="https://drive.google.com/file/d/13eKMDotNdEcJqDnzM2-PDEE1xbeMiZP-/view?usp=sharing" target="_blank" class="extra-link">📜 Hockey Certificate →</a>
+    </div>
+
+    <div class="extra-card fade-in">
+      <div class="extra-title">COLLEGE HACKATHON — 2ND PLACE</div>
+      <div class="extra-desc">Built an AI-powered learning tool that helps students summarize, simplify, and understand academic concepts. Featured in the college magazine.</div>
+    </div>
+
+    <div class="extra-card fade-in">
+      <div class="extra-title">VP — COLLEGE IT CLUB</div>
+      <div class="extra-desc">Led initiatives to mentor juniors, organize technical competitions, and conduct sessions on core concepts — fostering a collaborative learning environment.</div>
+    </div>
+
+    <div class="extra-card fade-in">
+      <div class="extra-title">OPEN SOURCE — GSSOC 2024</div>
+      <div class="extra-desc">Selected as a contributor and worked on multiple open-source projects, fixing bugs, adding features, and collaborating with maintainers worldwide.</div>
+      <a href="https://drive.google.com/file/d/1xcC_evOQmKgpGA5W0IetkzQDEWuHTu5g/view?usp=sharing" target="_blank" class="extra-link">📜 View Certificate →</a>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<div class="bg-deep" id="contact">
+<section>
+  <div class="sec-title">CONTACT</div>
+  <div class="contact-wrap">
+
+    <div class="sign-board fade-in">
+      <div class="sign-board-title">— GET IN TOUCH —</div>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-info">
+            <span class="contact-label">PHONE</span>
+            <span class="contact-val"><a href="tel:+917219552473">+91 72195 52473</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <span class="contact-label">EMAIL</span>
+            <span class="contact-val"><a href="mailto:shreyasmunge7@gmail.com">shreyasmunge7@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sign-post-stick"></div>
+
+    <div class="profile-links fade-in">
+      <a href="https://github.com/shreyasmunge" target="_blank" class="profile-btn">
+        <span class="pb-icon">🐙</span>
+        <div class="pb-info"><span class="pb-label">CODE</span><span class="pb-name">GitHub</span></div>
+      </a>
+      <a href="https://www.linkedin.com/in/shreyas-munge/" target="_blank" class="profile-btn">
+        <span class="pb-icon">💼</span>
+        <div class="pb-info"><span class="pb-label">NETWORK</span><span class="pb-name">LinkedIn</span></div>
+      </a>
+      <a href="https://leetcode.com/u/shreyasmunge7/" target="_blank" class="profile-btn">
+        <span class="pb-icon">🧩</span>
+        <div class="pb-info"><span class="pb-label">DSA</span><span class="pb-name">LeetCode</span></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- ══════════════ RESUME MODAL ══════════════ -->
+<!--
+  SECURITY NOTE:
+  The Google Drive link below uses /preview which shows ONLY this specific file
+  in an isolated viewer — it does NOT expose your Drive, other files, or any
+  personal information. The viewer is sandboxed by Google.
+  The direct download link uses the export endpoint which forces a download of
+  only this file. Neither link grants access to anything else in your Drive.
+-->
+<div class="resume-modal" id="resumeModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="resume-box">
+    <div class="resume-box-title">📜 RESUME</div>
+    <p>Shreyas Munge — Software Engineer. Click VIEW to open in Google's secure preview, or DOWNLOAD to save a copy.</p>
+    <div class="resume-btn-row">
+      <!-- Preview: shows ONLY this file, no Drive access -->
+      <a href="https://drive.google.com/file/d/13WGn2bcbrTAhm9QllZ7lOvFjZYkTlYX-/preview"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="rbtn green">👁 VIEW</a>
+      <!-- Direct download of this file only -->
+      <a href="https://drive.google.com/uc?export=download&id=13WGn2bcbrTAhm9QllZ7lOvFjZYkTlYX-"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="rbtn green">⬇ DOWNLOAD</a>
+      <button class="rbtn grey" onclick="document.getElementById('resumeModal').classList.remove('open')">✖ CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ HOTBAR ══════════════ -->
+<div class="hotbar">
+  <div class="hb-slot active" data-label="HOME"            data-target="#home">🏠</div>
+  <div class="hb-slot"        data-label="ABOUT ME"        data-target="#about">👤</div>
+  <div class="hb-slot"        data-label="EXPERIENCE"      data-target="#experience">📋</div>
+  <div class="hb-slot"        data-label="PROJECTS"        data-target="#projects">📦</div>
+  <div class="hb-slot"        data-label="SKILLS"          data-target="#skills">⚒</div>
+  <div class="hb-slot"        data-label="EXTRACURRICULAR" data-target="#extracurricular">🎯</div>
+  <div class="hb-slot"        data-label="CONTACT"         data-target="#contact">✉</div>
+  <div class="hb-slot"        data-label="RESUME"          data-target="modal">📜</div>
+</div>
+
+<script>
+/* ── Stars ── */
+const starsEl=document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');s.className='star';
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*2}s;animation-duration:${1.5+Math.random()*2}s;`;
+  starsEl.appendChild(s);
+}
+
+/* ── Ground blocks ── */
+const gRow=document.getElementById('groundRow');
+const gt=['grass','dirt','grass','grass','dirt','grass','dirt','grass'];
+for(let i=0;i<Math.ceil(window.innerWidth/64)+4;i++){
+  const b=document.createElement('div');const isG=gt[i%gt.length]==='grass';
+  b.style.cssText=`width:64px;height:100%;flex-shrink:0;background:${isG?'var(--dirt)':'#4A2810'};border-right:1px solid rgba(0,0,0,.2);position:relative;`;
+  const top=document.createElement('div');
+  top.style.cssText=`position:absolute;top:0;left:0;right:0;height:14px;background:${isG?'var(--grass)':'#6A3A18'};`;
+  b.appendChild(top);gRow.appendChild(b);
+}
+
+/* ── Scroll hint ── */
+const hint=document.getElementById('scrollHint');
+window.addEventListener('scroll',()=>hint.classList.toggle('hidden',window.scrollY>80),{passive:true});
+
+/* ── Click particles ── */
+const pc=['#5CE8E8','#F0C020','#50C820','#FF5050','#FFFFFF','#A0722A','#9050E0'];
+document.addEventListener('click',e=>{
+  for(let i=0;i<10;i++){
+    const p=document.createElement('div');p.className='particle';
+    p.style.cssText=`left:${e.clientX+Math.random()*24-12}px;top:${e.clientY}px;background:${pc[Math.floor(Math.random()*pc.length)]};animation-duration:${.4+Math.random()*.5}s;border-radius:${Math.random()>.5?'0':'2px'}`;
+    document.body.appendChild(p);setTimeout(()=>p.remove(),900);
+  }
+});
+
+/* ── Hotbar ── */
+const hbSlots=document.querySelectorAll('.hb-slot');
+hbSlots.forEach(slot=>{
+  slot.addEventListener('click',()=>{
+    const t=slot.getAttribute('data-target');
+    if(t==='modal'){document.getElementById('resumeModal').classList.add('open');return;}
+    hbSlots.forEach(s=>s.classList.remove('active'));
+    slot.classList.add('active');
+    const el=document.querySelector(t);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  });
+});
+document.addEventListener('keydown',e=>{
+  const n=parseInt(e.key);
+  if(n>=1&&n<=8)hbSlots[n-1]?.click();
+  if(e.key==='Escape')document.getElementById('resumeModal').classList.remove('open');
+});
+
+/* ── Active hotbar on scroll ── */
+const sids=['home','about','experience','projects','skills','extracurricular','contact'];
+window.addEventListener('scroll',()=>{
+  const mid=window.scrollY+window.innerHeight*.4;
+  let cur=0;
+  sids.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.offsetTop<=mid)cur=i;});
+  hbSlots.forEach(s=>s.classList.remove('active'));
+  hbSlots[cur]?.classList.add('active');
+},{passive:true});
+
+/* ── Fade-in observer ── */
+const obs=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
