@@ -176,6 +176,8 @@
     .sp-web    .skill-panel-header{background:#0A3A3A;border-color:var(--diamond);}
     .sp-ai     .skill-panel-header{background:#3A0000;border-color:var(--red);}
     .sp-tools  .skill-panel-header{background:#0A3A0A;border-color:var(--emerald);}
+    .sp-dist   .skill-panel-header{background:#2A1A3A;border-color:var(--purple);}
+    .sp-core   .skill-panel-header{background:#1A2A3A;border-color:var(--diamond);}
 
     /* tag container */
     .skill-tags{
@@ -210,6 +212,8 @@
     .sp-web   .sk-tag{border-left-color:var(--diamond);}
     .sp-ai    .sk-tag{border-left-color:var(--red);}
     .sp-tools .sk-tag{border-left-color:var(--emerald);}
+    .sp-dist  .sk-tag{border-left-color:var(--purple);}
+    .sp-core  .sk-tag{border-left-color:var(--diamond);}
 
     /* small dot before tag name */
     .sk-tag::before{
@@ -222,6 +226,8 @@
     .sp-web   .sk-tag::before{color:var(--diamond);}
     .sp-ai    .sk-tag::before{color:var(--red);}
     .sp-tools .sk-tag::before{color:var(--emerald);}
+    .sp-dist  .sk-tag::before{color:var(--purple);}
+    .sp-core  .sk-tag::before{color:var(--diamond);}
 
     /* ── EXTRACURRICULAR — no icons ── */
     .extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;max-width:920px;margin:0 auto;}
@@ -317,8 +323,6 @@
     <h1 class="hero-title"><span class="name">SHREYAS MUNGE</span></h1>
     <p class="hero-tagline">
       <span class="hl">Passionate about AI + SWE</span>
-      <span class="sep">|</span>
-      <span class="hl">Open to Internship & Full-Time Roles</span>
     </p>
     <div>
       <button class="btn-resume" onclick="document.getElementById('resumeModal').classList.add('open')">📜 VIEW RESUME</button>
@@ -341,7 +345,7 @@
   <div class="about-card fade-in">
     <div class="inv-title">— PLAYER INFO —</div>
     <div class="about-text">
-      <p>👋 Hey there! I am Shreyas, a CS student who enjoys building things, breaking them, and improving them — especially when software and AI come together.</p>
+      <p>👋 Hey there! I am Shreyas, a founding engineer at a voice AI startup who enjoys building things, breaking them, and improving them — especially when software and AI come together.</p>
       <p>🤖 I am particularly interested in designing software systems where AI is a core part of the application, not just an add-on. This includes working on things like AI agents, intelligent workflows, and retrieval-based systems that make software more useful and effective in real-world scenarios. To me, AI is not just about models — it is about how those models fit into a well-designed system.</p>
       <p>🔍 I am currently exploring internship and full-time opportunities in AI + SWE roles. I am immediately available to contribute.</p>
       <p>💬 Feel free to get in touch.</p>
@@ -355,6 +359,15 @@
 <section>
   <div class="sec-title">EXPERIENCE</div>
   <div class="exp-list">
+    <div class="exp-entry fade-in">
+      <div class="exp-stripe"></div>
+      <div class="exp-body">
+        <div class="exp-date">📅 JUN 2026 – PRESENT</div>
+        <div class="exp-role">FOUNDING ENGINEER</div>
+        <div class="exp-company">🏢 Tabbly</div>
+        <div class="exp-desc">Scaled calling infrastructure from 30K to 100K+ calls/day by re-architecting the dialer for concurrent execution, optimizing database operations, and implementing rate limiting and fair-share scheduling. Reduced end-to-end voice-agent latency from 3.5s to 1.7s by optimizing the real-time voice AI pipeline across STT, LLM, and TTS. Built a RAG-based Knowledge Base for AI voice agents, an in-house billing and invoicing platform, and core telephony infrastructure across SIP and telecom providers — while optimizing high-volume backend and database operations in production.</div>
+      </div>
+    </div>
     <div class="exp-entry fade-in">
       <div class="exp-stripe"></div>
       <div class="exp-body">
@@ -449,6 +462,7 @@
       <div class="skill-tags">
         <span class="sk-tag">Python</span>
         <span class="sk-tag">Java</span>
+        <span class="sk-tag">PHP</span>
       </div>
     </div>
 
@@ -466,6 +480,8 @@
         <span class="sk-tag">Django</span>
         <span class="sk-tag">Flask</span>
         <span class="sk-tag">React</span>
+        <span class="sk-tag">Async Programming</span>
+        <span class="sk-tag">Webhooks</span>
         <span class="sk-tag">Postman</span>
         <span class="sk-tag">Hopscotch</span>
       </div>
@@ -484,8 +500,26 @@
         <span class="sk-tag">FAISS</span>
         <span class="sk-tag">RAG</span>
         <span class="sk-tag">AI Agents</span>
+        <span class="sk-tag">LLM Integration</span>
+        <span class="sk-tag">STT</span>
+        <span class="sk-tag">TTS</span>
         <span class="sk-tag">Celery</span>
         <span class="sk-tag">Semantic Search</span>
+      </div>
+    </div>
+
+    <!-- Distributed Systems -->
+    <div class="skill-panel sp-dist fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">DISTRIBUTED SYSTEMS</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">Redis</span>
+        <span class="sk-tag">Celery</span>
+        <span class="sk-tag">Rate Limiting</span>
+        <span class="sk-tag">Fair-Share Scheduling</span>
+        <span class="sk-tag">Idempotency &amp; Distributed Locking</span>
+        <span class="sk-tag">Event-Driven Architecture</span>
       </div>
     </div>
 
@@ -498,12 +532,30 @@
         <span class="sk-tag">Git</span>
         <span class="sk-tag">GitHub</span>
         <span class="sk-tag">PostgreSQL</span>
+        <span class="sk-tag">MySQL</span>
         <span class="sk-tag">SQLite</span>
         <span class="sk-tag">SQL</span>
+        <span class="sk-tag">FAISS</span>
+        <span class="sk-tag">Qdrant</span>
         <span class="sk-tag">Redis</span>
         <span class="sk-tag">Supabase</span>
         <span class="sk-tag">Docker</span>
+        <span class="sk-tag">Linux</span>
+        <span class="sk-tag">CI/CD basics</span>
+        <span class="sk-tag">Production Deployment</span>
         <span class="sk-tag">VS Code</span>
+      </div>
+    </div>
+
+    <!-- Core CS -->
+    <div class="skill-panel sp-core fade-in">
+      <div class="skill-panel-header">
+        <span class="sp-label">CORE CS</span>
+      </div>
+      <div class="skill-tags">
+        <span class="sk-tag">Data Structures &amp; Algorithms</span>
+        <span class="sk-tag">OOP</span>
+        <span class="sk-tag">Operating Systems</span>
       </div>
     </div>
 
@@ -606,12 +658,12 @@
     <p>Shreyas Munge — Software Engineer. Click VIEW to open in Google's secure preview, or DOWNLOAD to save a copy.</p>
     <div class="resume-btn-row">
       <!-- Preview: shows ONLY this file, no Drive access -->
-      <a href="https://drive.google.com/file/d/1rbAsiu4uDJjrRf7mFxNtGa2v1KlXC1bL/preview"
+      <a href="https://drive.google.com/file/d/1Csw3SJGC1Pc-aALHy7O93zBkde8P_-Ao/preview"
          target="_blank"
          rel="noopener noreferrer"
          class="rbtn green">👁 VIEW</a>
       <!-- Direct download of this file only -->
-      <a href="https://drive.google.com/uc?export=download&id=1rbAsiu4uDJjrRf7mFxNtGa2v1KlXC1bL"
+      <a href="https://drive.google.com/uc?export=download&id=1Csw3SJGC1Pc-aALHy7O93zBkde8P_-Ao"
          target="_blank"
          rel="noopener noreferrer"
          class="rbtn green">⬇ DOWNLOAD</a>
